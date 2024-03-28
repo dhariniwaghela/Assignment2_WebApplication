@@ -13,7 +13,7 @@ import UserListWidget from "./components/UserListWidget"; // Import UserListWidg
 
 function App() {
   return (
-    <Container style={{ width: "400px" }}>
+    <Container>
       <Row>
         <Col>
           <UserAuthContextProvider>
