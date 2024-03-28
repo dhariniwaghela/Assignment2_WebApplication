@@ -14,10 +14,6 @@ import UserListWidget from "./components/UserListWidget"; // Import UserListWidg
 
 function App() {
   return (
-<<<<<<< HEAD
-=======
-    <Container>
->>>>>>> 7f25b9dd33d69a74267611ea0dc68136755da0b0
       <Row>
         <Col>
           <UserAuthContextProvider>
