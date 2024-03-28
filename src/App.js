@@ -9,11 +9,11 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Dashboard from "./components/Dashboard"; // Import Dashboard component
 import UserProfileWidget from "./components/UserProfileWidget"; // Import UserProfileWidget component
+import Widget from "./components/Widget"
 import UserListWidget from "./components/UserListWidget"; // Import UserListWidget component
 
 function App() {
   return (
-    <Container style={{ width: "400px" }}>
       <Row>
         <Col>
           <UserAuthContextProvider>
@@ -22,12 +22,13 @@ function App() {
                 path="/home"
                 element={
                   <ProtectedRoute>
-                  
                     <Home />
                   </ProtectedRoute>
                 }
               />
+                <Route path="/home" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/widget" element={<Widget />} />
               <Route path="/user-profile" element={<UserProfileWidget />} />
               <Route path="/user-list" element={<UserListWidget />} />
               <Route path="/" element={<Login />} />
@@ -36,7 +37,7 @@ function App() {
           </UserAuthContextProvider>
         </Col>
       </Row>
-    </Container>
+  
   );
 }
 

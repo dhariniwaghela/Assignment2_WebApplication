@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import "../styles/Dashboard.css"; // Import custom style
 const CalculatorWidget = () => {
   const [expression, setExpression] = useState("");
   const [result, setResult] = useState("");

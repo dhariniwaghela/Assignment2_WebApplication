@@ -1,0 +1,12 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+  }
+  
+  .home-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  

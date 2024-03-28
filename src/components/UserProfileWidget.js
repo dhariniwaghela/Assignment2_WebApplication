@@ -1,6 +1,7 @@
 import React from 'react';
 import { useUserAuth } from "../context/UserAuthContext"; // Import the useUserAuth hook
-import { Navbar, Nav, Container } from "react-bootstrap";
+
+import NavigationBar from "./Navigationbar";
 
 
 const UserProfileWidget = () => {
@@ -9,25 +10,15 @@ const UserProfileWidget = () => {
   return (
     <div>
         <>
-        <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="/home">My App</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-              <Nav.Link href="/user-profile">User Profile</Nav.Link>
-              <Nav.Link href="/user-list">User List</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+        <div className="navbar">
+<NavigationBar/>
+      </div>
         
         </>
       <h3>User Profile Information</h3>
       {user && (
         <div>
-          <p>Name: {user.displayName}</p> {/* Assuming displayName is available */}
+           {/* Assuming displayName is available */}
           <p>Email: {user.email}</p>
           {/* Add other user profile information here */}
         </div>

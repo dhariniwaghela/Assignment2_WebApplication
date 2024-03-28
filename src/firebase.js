@@ -3,17 +3,19 @@ import { initializeApp } from "firebase/app";
 import{getAuth} from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBJS3ntt9lqBYgOXVQthTZ8uTsm6hCm750",
-  authDomain: "web-react-native.firebaseapp.com",
-  projectId: "web-react-native",
-  storageBucket: "web-react-native.appspot.com",
-  messagingSenderId: "474365525725",
-  appId: "1:474365525725:web:4e325014d921604d4fe534",
-  measurementId: "G-8MD9R26022"
+  apiKey: "AIzaSyC8CuRto43SDUq_zw0fZf_8NqVAfKXtRcM",
+  authDomain: "assignment2-webapplication.firebaseapp.com",
+  databaseURL: "https://assignment2-webapplication-default-rtdb.firebaseio.com",
+  projectId: "assignment2-webapplication",
+  storageBucket: "assignment2-webapplication.appspot.com",
+  messagingSenderId: "721541659165",
+  appId: "1:721541659165:web:d3904900c601ebce8ba4f4",
+  measurementId: "G-CYDY5V7P2F"
 };
 
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export default app;
+const auth = getAuth(app);
+export { auth };
+export default app

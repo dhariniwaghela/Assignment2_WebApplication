@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import axios from "axios"; // Import axios for making API requests
-import "../styles/Dashboard.css"; // Import custom style
-
+import "../styles/Dashboard.css"; // Import custom styles
+import CalculatorWidget from "../widgets/CalculatorWidget"; // Import CalculatorWidget
+import TaskApp from "../widgets/TaskApp";
 import NavigationBar from "./Navigationbar";
 
 const Dashboard = () => {
@@ -31,20 +32,19 @@ const Dashboard = () => {
         <div className="navbar">
 <NavigationBar/>
       </div>
+        
         </>
         
         <h1 className="dashboard-title">Dashboard Page</h1>
-        <div className="widgets-container">
-          <div className="widget weather-widget">
-            {weatherData && (
-              <div className="weather-info">
-                <h2 className="weather-city">Weather in {weatherData.name}</h2>
-                <p className="weather-temp">Temperature: {weatherData.main.temp}°C</p>
-                <p className="weather-description">Description: {weatherData.weather[0].description}</p>
-              </div>
-            )}
+       
+          <div className="widget calculator-widget">
+            <CalculatorWidget />
           </div>
-        </div>
+
+          <div className="widget task-widget">
+            <TaskApp />
+          </div>
+
       </div>
     );
   };

@@ -34,46 +34,73 @@ const Login = () => {
   };
 
   return (
-    <>
-     <div class="container">
-  <div class="p-4 box">
-    <h2 class="mb-3">Firebase/ React Auth Login</h2>
 
-    {error && <div class="alert alert-danger" role="alert">{error}</div>}
+    <div class="screen-container">
+      <section class="background-radial-gradient overflow-hidden">
 
-    <form onSubmit={handleSubmit}>
-      <div class="form-group mb-3">
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Email address"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div class="form-group mb-3">
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-      <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-primary">Log In</button>
-      </div>
-    </form>
-    <hr />
-  
-  </div>
-  <div class="p-4 box mt-3 text-center">
-    Don't have an account? <a href="/signup">Sign up</a>
-  </div>
-</div>
+        <div class="container py-5 text-center text-lg-start my-5">
+          <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <h1 class="my-5 display-5 fw-bold ls-tight" style={{ color: 'hsl(218, 81%, 95%)' }}>
+                Manage your <br />
+                <span style={{ color: 'hsl(218, 81%, 75%)' }}>personal profile</span>
+              </h1>
+              <p class="mb-4 opacity-70" style={{ color: 'hsl(218, 81%, 85%)' }}>
+                Resgiter with us and manage your personal profile and details
+              </p>
+            </div>
 
-    </>
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+              <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+              <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+              <div class="card bg-glass">
+                <div class="card-body px-4 py-5 px-md-5">
+
+                  {error && <div class="alert alert-danger" role="alert"> Please Enter Correct Email or Password </div>}
+
+                  <form onSubmit={handleSubmit}>
+                    {/* <!-- Email input --> */}
+                    <div class="form-outline mb-4">
+                      <input type="email"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        class="form-control"
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                      <label class="form-label" for="form3Example3">Email address</label>
+                    </div>
+
+                    {/* <!-- Password input --> */}
+                    <div class="form-outline mb-4">
+                      <input
+                        type="password"
+                        id="exampleInputPassword1"
+                        class="form-control"
+                        onChange={(e) => setPassword(e.target.value)} />
+                      <label class="form-label" for="form3Example4">Password</label>
+                    </div>
+
+                    {/* <!-- Submit button --> */}
+                    <div class="text-center d-flex justify-content-center">
+                      <button type="submit" class="btn btn-primary btn-block mb-4 ">
+                        Login
+                      </button>
+                    </div>
+                    <div class="text-center">
+                      <div class="p-4 box mt-3 text-center">
+                        Don't have an account? <a href="/signup">Sign up</a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
   );
 };
 
