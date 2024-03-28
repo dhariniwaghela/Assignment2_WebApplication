@@ -9,6 +9,8 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase";
 
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
@@ -19,7 +21,28 @@ export function UserAuthContextProvider({ children }) {
   }
   function signUp(email, password) {
     return createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Store only email and ID in Firestore
+      storeUserData(userCredential.user.uid, {
+        email: userCredential.user.email,
+        id: userCredential.user.uid
+      });
+      return userCredential;
+    });
   }
+
+  function storeUserData(userId, userData) {
+    const db = getFirestore();
+    const userRef = doc(db, "users", userId);
+    setDoc(userRef, userData)
+      .then(() => {
+        console.log("User data stored successfully!");
+      })
+      .catch((error) => {
+        console.error("Error storing user data: ", error);
+      });
+  }
+
     
   function logOut() {
     return signOut(auth);
