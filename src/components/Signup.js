@@ -26,7 +26,7 @@ const Signup = () => {
 
   return (
 
-    <div class="screen-container">
+    <div class="screen-container background-radial-gradient">
       <section class="background-radial-gradient overflow-hidden">
 
         <div class="container py-5 text-center text-lg-start my-5">
