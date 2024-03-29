@@ -1,18 +1,26 @@
+
+// Import necessary modules from React and other libraries
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 
-import "../styles/Login.css"; // Import custom styles
+// Import custom styles for the Signup component
+import "../styles/Login.css"; 
+// Import custom context for user authentication
 import { useUserAuth } from "../context/UserAuthContext";
 
+// Define the Signup component
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const { signUp } = useUserAuth();
+
+  // Initialize navigation functionality
   let navigate = useNavigate();
 
+  // Function to handle form submission when signing up
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -24,6 +32,7 @@ const Signup = () => {
     }
   };
 
+  // Render the signup form
   return (
 
     <div class="screen-container background-radial-gradient">
@@ -95,4 +104,5 @@ const Signup = () => {
   );
 };
 
+// Export the Signup component as default
 export default Signup;

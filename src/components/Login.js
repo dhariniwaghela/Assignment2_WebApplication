@@ -6,13 +6,18 @@ import GoogleButton from "react-google-button";
 import "../styles/Login.css"; // Import custom styles
 import { useUserAuth } from "../context/UserAuthContext";
 
+// Define the Login component
 const Login = () => {
+  // Define state variables for email, password, and error messages
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { logIn, googleSignIn } = useUserAuth();
+
+  // Extract the logIn and googleSignIn functions from the UserAuthContext
   const navigate = useNavigate();
 
+  // Function to handle form submission when logging in
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -24,6 +29,7 @@ const Login = () => {
     }
   };
 
+  // Function to handle Google sign-in
   const handleGoogleSignIn = async (e) => {
     e.preventDefault();
     try {
@@ -34,6 +40,7 @@ const Login = () => {
     }
   };
 
+  // Render the login form
   return (
 
     <div class="screen-container background-radial-gradient">
@@ -105,4 +112,5 @@ const Login = () => {
   );
 };
 
+// Export the Login component as default
 export default Login;

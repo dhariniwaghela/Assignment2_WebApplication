@@ -1,8 +1,13 @@
 import React from "react";
 import QuoteApp from "../widgets/QuoteApp";
 import NavigationBar from "./Navigationbar";
-function Home() {
 
+
+
+// Define the Home component
+function Home() {
+      
+// Render the Home component UI
       return (
             <>
                   <div className="Home">
