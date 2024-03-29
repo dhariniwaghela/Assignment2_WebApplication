@@ -9,7 +9,9 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase";
 
-import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import { getDatabase, ref, push } from "firebase/database";
+
+const db = getDatabase();
 
 const userAuthContext = createContext();
 
@@ -19,43 +21,43 @@ export function UserAuthContextProvider({ children }) {
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
+
   function signUp(email, password) {
     return createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Store only email and ID in Firestore
-      storeUserData(userCredential.user.uid, {
-        email: userCredential.user.email,
-        id: userCredential.user.uid
-      });
-      return userCredential;
-    });
-  }
-
-  function storeUserData(userId, userData) {
-    const db = getFirestore();
-    const userRef = doc(db, "users", userId);
-    setDoc(userRef, userData)
-      .then(() => {
-        console.log("User data stored successfully!");
-      })
-      .catch((error) => {
-        console.error("Error storing user data: ", error);
-      });
-  }
-
+      .then((userCredential) => {
+        const newData = {
+          userId: userCredential.user.uid,
+          email: userCredential.user.email
+        };
     
+        // Reference to the "Products" node
+        const UserRef = ref(db, "Users");
+    
+        // Push the new data into the "Products" node
+        push(UserRef, newData)
+          .then((newDataRef) => {
+            console.log("Data pushed successfully with key:", newDataRef.key);
+          })
+          .catch((error) => {
+            console.error("Error pushing data:", error);
+          });
+      });
+  }
+
+
   function logOut() {
     return signOut(auth);
   }
+
   function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleAuthProvider);
   }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
-      console.log("Auth", currentuser);
-      setUser(currentuser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log("Auth", currentUser);
+      setUser(currentUser);
     });
 
     return () => {
