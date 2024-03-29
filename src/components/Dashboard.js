@@ -1,17 +1,27 @@
+// Import necessary modules from React and other libraries
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import axios from "axios"; // Import axios for making API requests
+
+// Import custom styles for the Dashboard component
 import "../styles/Dashboard.css"; // Import custom style
 import "../styles/QuoteApp.css"; // Import custom style
 
-
+// Import the NavigationBar component
 import NavigationBar from "./Navigationbar";
 
+// Define the Dashboard component
 const Dashboard = () => {
-  const [weatherData, setWeatherData] = useState(null);
-  const apiKey = "327027ac9428fcb3ce8fccf1aa7929ea"; // Replace "YOUR_API_KEY" with your actual API key
 
+  // Define state variable for storing weather data
+  const [weatherData, setWeatherData] = useState(null);
+
+  // Define API key for OpenWeatherMap API
+  const apiKey = "327027ac9428fcb3ce8fccf1aa7929ea";
+
+  // Effect hook to fetch weather data when the component mounts or when the API key changes
   useEffect(() => {
+    // Function to fetch weather data
     const fetchWeatherData = async () => {
       try {
         const response = await axios.get(
@@ -23,11 +33,13 @@ const Dashboard = () => {
       }
     };
 
+    // Call the fetchWeatherData function
     fetchWeatherData();
   }, [apiKey]); // Ensure apiKey is included in the dependency array
 
-  return (
 
+  // Render the dashboard UI
+  return (
     <div className="dashboard">
       <div className="navbar">
         <NavigationBar />
@@ -70,4 +82,5 @@ const Dashboard = () => {
   );
 };
 
+// Export the Dashboard component as default
 export default Dashboard;

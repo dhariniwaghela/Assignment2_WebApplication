@@ -3,7 +3,7 @@ import { useUserAuth } from "../context/UserAuthContext"; // Import the useUserA
 
 import NavigationBar from "./Navigationbar";
 
-
+// Define the UserProfileWidget component
 const UserProfileWidget = () => {
   const { user } = useUserAuth(); // Access user object from the context
 

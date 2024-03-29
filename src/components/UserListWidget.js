@@ -5,13 +5,18 @@ import db from '../firebase'; // Import Firebase firestore instance
 
 import NavigationBar from "./Navigationbar";
 
-
+// Define the UserListWidget component
 const UserListWidget = () => {
-  const { user } = useUserAuth(); // Access user object from the context
+  // Access user object from the context
+  const { user } = useUserAuth(); 
+
+  // Define state variable to store the list of users
   const [userList, setUserList] = useState([]);
 
+  // Effect hook to fetch the list of users when the component mounts
   useEffect(() => {
 
+    // Function to fetch the list of users
     const fetchUserList = async () => {
       try {
         const usersRef = collection(db, 'users'); // Assuming 'users' is your collection name
@@ -24,9 +29,11 @@ const UserListWidget = () => {
       }
     };
 
+     // Call the fetchUserList function
     fetchUserList();
   }, []);
 
+  // Render the UserListWidget UI
   return (
     <div>
 
