@@ -18,8 +18,7 @@ const NavigationBar = () => {
       }
     };
   return (
-    <Navbar bg="dark" variant="dark" expand="lg"   >
-      <Container className='navcontainer'>
+    <Navbar className='px-4 py-2' bg="dark" variant="dark" expand="lg">
         <Navbar.Brand href="/home">Home</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -32,8 +31,10 @@ const NavigationBar = () => {
               <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
+    
+
+    
   );
 }
 export default NavigationBar;

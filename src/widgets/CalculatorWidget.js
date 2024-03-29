@@ -19,7 +19,7 @@ const CalculatorWidget = () => {
   };
 
   return (
-    <div className="calculator-widget">
+    <div className="calculator-widget p-5" >
       <h3>Calculator</h3>
       <input
         type="text"
@@ -28,7 +28,10 @@ const CalculatorWidget = () => {
         placeholder="Enter expression"
       />
       <button onClick={calculateResult}>Calculate</button>
-      <div className="result">{result}</div>
+      {result && <div className="result alert alert-primary" role="alert">
+        {result}
+      </div>}
+
     </div>
   );
 };

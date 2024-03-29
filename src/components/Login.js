@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
+import "../styles/Login.css"; // Import custom styles
 import { useUserAuth } from "../context/UserAuthContext";
 
 const Login = () => {
@@ -35,7 +36,7 @@ const Login = () => {
 
   return (
 
-    <div class="screen-container">
+    <div class="screen-container background-radial-gradient">
       <section class="background-radial-gradient overflow-hidden">
 
         <div class="container py-5 text-center text-lg-start my-5">
